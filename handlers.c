@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   handlers.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gaviles- <gaviles-@student.42roma.i>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/12 18:31:58 by gaviles-          #+#    #+#             */
-/*   Updated: 2022/02/13 11:28:11 by ohassyao         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <unistd.h>
 
 void	error(void)
@@ -22,14 +10,15 @@ void	printchar(char a)
 	write(1, &a, 1);
 }
 
-void	check_if_number(char *input, char *output)
+void	check_if_number(char *input)
 {
 	int	counter;
+	char	*output;
 
 	counter = 0;
 	while (input[counter] != '\0')
 	{
-		if (input[counter] >= '0' && <= '9')
+		if (input[counter] >= '1' && <= '9')
 		{
 			output[counter] = input[counter];
 			counter++;
@@ -42,4 +31,31 @@ void	check_if_number(char *input, char *output)
 			break ;
 		}
 	}
+	char_to_int_conversion(output);
+}
+
+void	char_to_int_conversion(char *str)
+{
+	int	*converted;
+	int	index;
+
+	while (str[index] != '\0')
+	{
+		converted[index] = str[index] + 48;
+		index++;
+	}
+	set_rows_and_columns(str);
+}
+
+void	set_rows_and_columns(char *str)
+{
+	int	index;
+
+	index = 0;
+	while (str[index] != '\0')
+	{
+		index++;
+	}
+	index = index / 4;
+	matrix(index, index, str);
 }
